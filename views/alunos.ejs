@@ -7,7 +7,26 @@
   <title>Alunos</title>
 </head>
 <body>
-  
-  <pre><%=JSON.stringify(alunos, null, 2)%></pre>
+
+  <form method="POST">
+    Nome: <input required type="text" name="nome"><br>
+    Sobrenome: <input required type="text" name="sobrenome"><br>
+    Email: <input required type="text" name="email"><br>
+    Ano matricula: <input required type="number" name="ano_matricula"><br>
+    <input type="submit" value="Enviar cadastro de aluno">
+  </form>
+
+  <div>
+      <% alunos.forEach(aluno => { %>
+        Nome: <%=aluno.nome%><br>
+        Sobrenome: <%=aluno.sobrenome%><br>
+        Email: <%=aluno.email%><br>
+        Ano matricula: <%=aluno.ano_matricula%><br>
+        <a href="/alunos/deletar/<%=aluno.id%>">Deletar</a>
+        <a href="/alunos/matricular/<%=aluno.id%>">Matricular no corrente</a>
+        <hr><br>
+      <% }) %>
+  </div>
+
 </body>
 </html>
