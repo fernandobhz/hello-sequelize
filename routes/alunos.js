@@ -15,6 +15,14 @@ router.post('/', async (req, res) => {
   res.render('alunos', { alunos });
 });
 
+router.post('/atualizar/:id', async (req, res) => {
+  const { id } = req.params;
+  const { nome, sobrenome, email, ano_matricula } = req.body;
+  await alunosController.atualizarAluno({ id, nome, sobrenome, email, ano_matricula });
+  res.redirect('/alunos');
+});
+
+
 router.get('/matricular/:id', async (req, res) => {
   const { id } = req.params;
 
