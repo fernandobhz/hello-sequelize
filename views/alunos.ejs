@@ -8,6 +8,7 @@
 </head>
 <body>
 
+  <h1>Novo Aluno</h1>
   <form method="POST">
     Nome: <input required type="text" name="nome"><br>
     Sobrenome: <input required type="text" name="sobrenome"><br>
@@ -15,18 +16,21 @@
     Ano matricula: <input required type="number" name="ano_matricula"><br>
     <input type="submit" value="Enviar cadastro de aluno">
   </form>
+  <br><br><br>
 
   <div>
       <% alunos.forEach(aluno => { %>
-        Nome: <%=aluno.nome%><br>
-        Sobrenome: <%=aluno.sobrenome%><br>
-        Email: <%=aluno.email%><br>
-        Ano matricula: <%=aluno.ano_matricula%><br>
-        <a href="/alunos/deletar/<%=aluno.id%>">Deletar</a>
-        <a href="/alunos/matricular/<%=aluno.id%>">Matricular no corrente</a>
-        <hr><br>
+        <form method="POST" action="/alunos/atualizar/<%=aluno.id%>">
+          Nome: <input required type="text" name="nome" value="<%=aluno.nome%>"><br>
+          Sobrenome: <input required type="text" name="sobrenome" value="<%=aluno.sobrenome%>"><br>
+          Email: <input required type="text" name="email" value="<%=aluno.email%>"><br>
+          Ano matricula: <input required type="number" name="ano_matricula" value="<%=aluno.ano_matricula%>"><br>          
+          <a href="/alunos/deletar/<%=aluno.id%>">Deletar</a>
+          <a href="/alunos/matricular/<%=aluno.id%>">Matricular no corrente</a>
+          <input type="submit" value="Atualizar dados">
+          <hr><br>
+        </form>
       <% }) %>
   </div>
-
 </body>
 </html>
