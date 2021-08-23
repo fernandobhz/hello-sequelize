@@ -1,9 +1,9 @@
-module.exports = {
+module.exports= {
   "development": {
     "username": "root",
-    "password": "741963",
-    "database": "dhschool",
-    "host": "127.0.0.1",
+    "password": null,
+    "database": "musimundos",
+    "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
