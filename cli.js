@@ -1,5 +1,5 @@
 const db = require("./database/models");
-const { Op } = require('sequelize');
+const { Op } = require("sequelize");
 
 const { log } = console;
 const line = () => log("".padEnd(120, "-"));
@@ -7,9 +7,14 @@ const line = () => log("".padEnd(120, "-"));
 const run = async () => {
   const print = (input) => {
     const rows = [input].flat().map((row) => row.dataValues);
-    log(rows);
+    log(JSON.stringify(rows, null, 2));
   };
 
+  log("Alunos e atendimentos");
+  const alunos = await db.Aluno.findAll({include: ['Atendimentos']});
+  print(alunos);
+
+  /*
   log("Todos alunos");
   line();
   const alunos = await db.Aluno.findAll();
@@ -35,6 +40,7 @@ const run = async () => {
   line();
   const alunosDesc = await db.Aluno.findAll({ order: [['nome', 'desc']], limit: 3, offset: 1 });
   print(alunosDesc);
+  */
 };
 
 run();
